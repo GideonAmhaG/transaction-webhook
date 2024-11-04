@@ -1,3 +1,30 @@
+# version: '3.8'
+
+# services:
+#   web:
+#     build: .
+#     ports:
+#       - "3000:3000"
+#     depends_on:
+#       - db
+#     environment:
+#       - DATABASE_URL=postgres://user:password@db:5432/yaya_wallet
+#       - WEBHOOK_SECRET_KEY=${WEBHOOK_SECRET_KEY}
+#       - NODE_ENV=development
+
+#   db:
+#     image: postgres:13
+#     volumes:
+#       - postgres_data:/var/lib/postgresql/data
+#     environment:
+#       - POSTGRES_USER=user
+#       - POSTGRES_PASSWORD=password
+#       - POSTGRES_DB=yaya_wallet
+
+# volumes:
+#   postgres_data:
+
+
 version: '3.8'
 
 services:
@@ -8,18 +35,19 @@ services:
     depends_on:
       - db
     environment:
-      - DATABASE_URL=postgres://user:password@db:5432/yaya_wallet
-      - WEBHOOK_SECRET_KEY=${WEBHOOK_SECRET_KEY}
-      - NODE_ENV=development
+      - DATABASE_URL=postgres://${DB_USERNAME}:${DB_PASSWORD}@db:5432/${DB_NAME}  
+      - WEBHOOK_SECRET_KEY=${WEBHOOK_SECRET_KEY}  
+      - NODE_ENV=${NODE_ENV} 
 
   db:
     image: postgres:13
     volumes:
       - postgres_data:/var/lib/postgresql/data
     environment:
-      - POSTGRES_USER=user
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_DB=yaya_wallet
+      - POSTGRES_USER=${DB_USERNAME}  
+      - POSTGRES_PASSWORD=${DB_PASSWORD}  
+      - POSTGRES_DB=${DB_NAME}  
 
 volumes:
-  postgres_data:
+  postgres_data:  
+  

@@ -64,7 +64,12 @@ Implement a webhook endpoint that receives and processes webhook notifications f
    WEBHOOK_SECRET_KEY=096557ade3bb273fc70b49262ffb460ece18da402e958b5d08645190a23a4979
    ```
 
-3. Start the service:
+3. Run database migrations:
+   ```bash
+   npx sequelize-cli db:migrate
+   ```
+
+4. Start the service:
    ```bash
    docker-compose up --build
    ```
