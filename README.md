@@ -1,4 +1,4 @@
-# YaYa Wallet Webhook Service
+# Transaction Webhook
 
 A webhook endpoint service that securely receives and processes transaction notifications from YaYa Wallet.
 
